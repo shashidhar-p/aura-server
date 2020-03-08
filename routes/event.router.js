@@ -10,5 +10,6 @@ router.put('/:id', EventController.update);
 router.delete('/:id', EventController.remove);
 router.get('/', EventController.getAll);
 router.get('/:id', EventController.getOne);
+router.get('/clubWiseList', EventController.clubWiseList);
 
 module.exports = router;

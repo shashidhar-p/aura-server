@@ -1,7 +1,8 @@
 const CONFIG = require('../config');
 const models = require('../models/index');
 const {to, ReE, ReS } = require('../services/utils.service');
-
+const asyncRoute = route => (req, res, next = console.error) =>
+    Promise.resolve(route(req, res)).catch(next);
 
 const create = function (req, res) {
     models.Event.create({
@@ -73,3 +74,17 @@ const updatePoster = function (req, res) {
         .catch(err => ReE(res, err, 422));
 };
 module.exports.updatePoster = updatePoster;
+
+const clubs = ['dance', 'dramatics', 'fashion', 'finearts', 'literary', 'music', 'quiz', 'photography', 'specials'];
+
+const clubWiseList = async function(req, res) {
+    let responseBody = [];
+
+    for (let i=0;i<clubs.length;i++) {
+        let temp = {};
+        temp[clubs[i]] = await models.Event.findAll({where: {club: clubs[i]}});
+        responseBody.push(temp);
+    }
+    ReS(res, responseBody, 200);
+};
+module.exports.clubWiseList = clubWiseList;
