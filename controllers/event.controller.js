@@ -23,7 +23,6 @@ module.exports.create = create;
 
 const update = function (req, res) {
     models.Event.update({
-        poster: '',
         name: req.body.name,
         description: req.body.description,
         oneliner: req.body.oneliner,
