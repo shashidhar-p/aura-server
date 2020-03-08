@@ -67,6 +67,9 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING,
             unique: true
         },
+        verified: {
+            type: Sequelize.BOOLEAN,
+        },
         status:
             {type: Sequelize.ENUM('active', 'inactive'), defaultValue: 'inactive'}
     });

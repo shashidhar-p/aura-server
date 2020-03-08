@@ -6,6 +6,6 @@ router.post('/', NotifController.create);
 router.put('/:id', NotifController.update);
 router.delete('/:id', NotifController.remove);
 router.get('/', NotifController.getAll);
-router.post('/:id', NotifController.getOne);
+router.get('/:id', NotifController.getOne);
 
 module.exports = router;

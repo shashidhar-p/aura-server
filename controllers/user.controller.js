@@ -15,6 +15,7 @@ const register = function (req, res) {
         college: req.body.college,
         password: hash,
         verification_code: verification_code,
+        verified: false,
     }).then(user => ReS(res, user, 200))
         .catch(err => ReE(res, err, 422));
 };
