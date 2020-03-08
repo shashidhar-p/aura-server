@@ -63,3 +63,13 @@ const getOne = function (req, res) {
         .catch(err => ReE(res, err, 422));
 };
 module.exports.getOne = getOne;
+
+const updatePoster = function (req, res) {
+    models.Event.update({
+        poster: req.files['poster'][0].filename,
+    },{
+        where: {id: req.params.id}
+    }).then(coord => ReS(res, coord, 200))
+        .catch(err => ReE(res, err, 422));
+};
+module.exports.updatePoster = updatePoster;

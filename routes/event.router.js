@@ -5,6 +5,7 @@ const upload = require('../services/multer.service');
 const fileHandler = upload.fields([{name: 'poster', maxCount: 1}]);
 
 router.post('/', fileHandler, EventController.create);
+router.post('/updatePoster', fileHandler, EventController.updatePoster);
 router.put('/:id', EventController.update);
 router.delete('/:id', EventController.remove);
 router.get('/', EventController.getAll);
