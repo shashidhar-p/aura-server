@@ -9,5 +9,6 @@ router.put('/:id', CoordController.update);
 router.delete('/:id', CoordController.remove);
 router.get('/', CoordController.getAll);
 router.get('/:id', CoordController.getOne);
+router.get('/byPh/:contact', CoordController.getByPh);
 
 module.exports = router;

@@ -59,3 +59,12 @@ const getOne = function (req, res) {
         .catch(err => ReE(res, err, 422));
 };
 module.exports.getOne = getOne;
+
+const getByPh = function (req, res) {
+    models.Coord.findOne({
+        where: {coordContact: req.params.contact}
+    })
+        .then(coord => ReS(res, coord, 200))
+        .catch(err => ReE(res, err, 422));
+};
+module.exports.getByPh = getByPh;
