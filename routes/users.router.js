@@ -5,7 +5,7 @@ const authorize = require('../_helpers/authorize');
 
 router.post('/register', UserController.register);
 router.post('/authenticate', UserController.authenticate);     // public route
-router.get('/', UserController.getAll); // admin only
-router.get('/:id', UserController.getById);       // all authenticated users
+router.get('/', authorize(), UserController.getAll); // admin only
+router.get('/:id', authorize(), UserController.getById);       // all authenticated users
 
 module.exports = router;
