@@ -58,10 +58,9 @@ async function getAll() {
 module.exports.getAll = getAll;
 
 async function getById(id) {
-    const user = users.find(u => u.id === parseInt(id));
+    user = await models.User.findOne({where: {id: id}});
     if (!user) return;
-    const {password, ...userWithoutPassword} = user;
-    return userWithoutPassword;
+    else return user;
 }
 
 module.exports.getById = getById;
